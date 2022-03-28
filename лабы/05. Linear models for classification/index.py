@@ -50,7 +50,7 @@ plt.legend()
 plt.show()
 
 for C, marker in zip([0.001, 1, 100], ['o', '^', 'v']):
-    lr_l1 = LogisticRegression(C=C, penalty="l2").fit(X_train, y_train)
+    lr_l1 = LogisticRegression(C=C, penalty="l1", solver="liblinear").fit(X_train, y_train)
     print("Правильностьнаобучениидлялогрегрессии l1 с C={:.3f}: {:.2f}".format( C, lr_l1.score(X_train, y_train)))
     print("Правильностьнатестедлялогрегрессии l1 с C={:.3f}: {:.2f}".format( C, lr_l1.score(X_test, y_test)))
     plt.plot(lr_l1.coef_.T, marker, label="C={:.3f}".format(C))
